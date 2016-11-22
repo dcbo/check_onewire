@@ -1,8 +1,15 @@
-# check_onewire
-nagios check plugin which connects to owserver (from owfs) to check temperature sensors
+# check_onewire.py
 
+check_onewire.py is a nagios check plugin which connects to owserver (from [owfs]) to check onewire temperature sensors.
+It returns the status by setting the exit state and the value of the sensor formatted as performance data.
 
-# usage
+A running owserver is required to use this plugin.
+
+## Usage
+
+There is no configuration, all parameters set by command line arguments:
+
+```
 usage: check_onewire.py [-h] [-cl <critical low>] [-ch <critical high>]
                         [-wl <warning low>] [-wh <warning high>] [-s <server>]
                         [-p <port>] [-v]
@@ -37,4 +44,44 @@ exit status:
                 but not critical limits.
   2 - CRITICAL: sensor value exceeds critical limits,
                 or sensor was not found.
+```
 
+## Example
+
+```
+ ./check_onewire.py 10.CD5B54020800 -wl 55 -wh 70 -cl 45 -ch 80
+
+OK - 61.12 C|temp=61.12;55:70;45:80
+
+```
+
+```
+ ./check_onewire.py 10.CD5B54020800 -wh 60 -ch 70
+
+WARNING - 61.94 C|temp=61.94;-50:60;-50:70
+
+```
+
+
+## Nagios Configuration
+### command definition
+```
+define command{
+        command_name    check_temp
+        command_line    $USER1$/check_owserver.py '$ARG1$' -cl '$ARG2$' -wl '$ARG3$' -wh '$ARG4$' -ch '$ARG5$'
+        }
+```
+
+```
+### service definition
+```
+define service {
+        use                      local-service
+        host_name                localhost
+        service_description      Kesseltemperatur
+        check_command            check_temp!10.CD5B5402080024!1!3!85!90        
+        }
+```
+ 
+ [owfs] http://owfs.org
+ [owserver] http://owfs.org/index.php?page=owserver
