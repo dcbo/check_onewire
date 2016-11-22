@@ -52,14 +52,12 @@ exit status:
  ./check_onewire.py 10.CD5B54020800 -wl 55 -wh 70 -cl 45 -ch 80
 
 OK - 61.12 C|temp=61.12;55:70;45:80
-
 ```
 
 ```
  ./check_onewire.py 10.CD5B54020800 -wh 60 -ch 70
 
 WARNING - 61.94 C|temp=61.94;-50:60;-50:70
-
 ```
 
 
@@ -72,7 +70,6 @@ define command{
         }
 ```
 
-```
 ### service definition
 ```
 define service {
