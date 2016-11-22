@@ -1,6 +1,6 @@
 # check_onewire.py
 
-check_onewire.py is a nagios check plugin which connects to owserver (from [owfs]) to check onewire temperature sensors.
+check_onewire.py is a [nagios](http://nagios.org) nagios plugin which connects to [owserver](http://owfs.org/index.php?page=owserver) (from [owfs](http://owfs.org) to check onewire temperature sensors.
 It returns the status by setting the exit state and the value of the sensor formatted as performance data.
 
 A running owserver is required to use this plugin.
@@ -79,6 +79,8 @@ define service {
         check_command            check_temp!10.CD5B5402080024!1!3!85!90        
         }
 ```
- 
- [owfs] http://owfs.org
- [owserver] http://owfs.org/index.php?page=owserver
+
+## references 
+- http://nagios.org
+- http://owfs.org
+- http://owfs.org/index.php?page=owserver
