@@ -80,7 +80,7 @@ define service {
         }
 ```
 
-## references 
+## References 
 - http://nagios.org
 - http://owfs.org
 - http://owfs.org/index.php?page=owserver
