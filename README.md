@@ -80,6 +80,13 @@ define service {
         }
 ```
 
+## Needed Libs
+the library python-ow is  needed by check_onewire.py
+innstall with
+```
+apt-get install python-ow
+```
+
 ## References 
 - http://nagios.org
 - http://owfs.org
