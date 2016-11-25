@@ -80,11 +80,37 @@ define service {
         }
 ```
 
-## Needed Libs
-the library python-ow is  needed by check_onewire.py
-innstall with
+## Libs required 
+python-ow is required by check_onewire.py (tested with version: 2.9p8-6)
+
+install with
 ```
 apt-get install python-ow
+```
+
+test which version is installed
+```
+# dpkg -s python-ow
+Package: python-ow
+Status: install ok installed
+Priority: extra
+Section: python
+Installed-Size: 144
+Maintainer: Vincent Danjean <vdanjean@debian.org>
+Architecture: amd64
+Source: owfs
+Version: 2.9p8-6
+Provides: python2.7-ow
+Depends: libc6 (>= 2.14), libow-2.9-8 (>= 2.8p4), python (>= 2.7), python (<< 2.8)
+Description: Dallas 1-wire support: Python bindings
+ The 1-Wire bus is a cheap low-speed bus for devices like weather
+ sensors, access control, etc. It can be attached to your system via
+ serial, USB, I2C, and other interfaces.
+ .
+ Python bindings for the OWFS 1-Wire support library have been produced
+ with SWIG and allow access to libow functions from Python code.
+Homepage: http://owfs.org/
+Python-Version: 2.7
 ```
 
 ## References 
